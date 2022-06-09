@@ -1,7 +1,18 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { routes } from "./router/routes";
+
 export default function App() {
   return (
-    <p className="text-3xl font-bold underline text-blue-700">
-      Hello world!
-    </p>
+    <Router>
+      <Routes>
+        {routes.map((route,i) => {
+          return <Route exact={route.exact} key={i} path={route.link} element={<route.component/>} />
+        })}
+      </Routes>
+    </Router>
   )
 }
